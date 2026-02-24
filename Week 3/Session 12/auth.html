@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentication Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+}
+
+.container {
+    width: 380px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #3498db;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2c3e50;
+}
+
+.toggle-link {
+    text-align: center;
+    margin-top: 15px;
+    cursor: pointer;
+    color: #3498db;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+
+small {
+    color: red;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIGN IN FORM -->
+    <form id="signinForm" aria-labelledby="signinTitle" role="form">
+        <h2 id="signinTitle">Sign In</h2>
+
+        <div class="form-group">
+            <label for="signinEmail">Email</label>
+            <input type="email" id="signinEmail" name="email"
+                   aria-required="true"
+                   aria-describedby="signinEmailHelp"
+                   required>
+            <small id="signinEmailHelp">Enter your registered email</small>
+        </div>
+
+        <div class="form-group">
+            <label for="signinPassword">Password</label>
+            <input type="password" id="signinPassword" name="password"
+                   aria-required="true"
+                   required>
+        </div>
+
+        <button type="submit" aria-label="Sign in to your account">
+            Sign In
+        </button>
+
+        <div class="toggle-link" onclick="toggleForms()" 
+             aria-label="Switch to sign up form">
+            Don't have an account? Sign Up
+        </div>
+    </form>
+
+    <!-- SIGN UP FORM -->
+    <form id="signupForm" class="hidden"
+          aria-labelledby="signupTitle"
+          role="form">
+
+        <h2 id="signupTitle">Sign Up</h2>
+
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullname"
+                   aria-required="true"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" name="email"
+                   aria-required="true"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" name="password"
+                   aria-required="true"
+                   minlength="6"
+                   aria-describedby="passwordHelp"
+                   required>
+            <small id="passwordHelp">
+                Minimum 6 characters required
+            </small>
+        </div>
+
+        <button type="submit" aria-label="Create new account">
+            Sign Up
+        </button>
+
+        <div class="toggle-link" onclick="toggleForms()" 
+             aria-label="Switch to sign in form">
+            Already have an account? Sign In
+        </div>
+    </form>
+
+</div>
+
+<script>
+function toggleForms() {
+    document.getElementById("signinForm").classList.toggle("hidden");
+    document.getElementById("signupForm").classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>

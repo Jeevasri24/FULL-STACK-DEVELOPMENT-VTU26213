@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouse Quadrant Monitor</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    transition: background 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+#info {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div id="info">
+Move your mouse anywhere on the screen
+</div>
+
+<script>
+
+// ===============================
+// Global Mouse Move Listener
+// ===============================
+document.addEventListener("mousemove", (event) => {
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const x = event.clientX;
+    const y = event.clientY;
+
+    const info = document.getElementById("info");
+
+    let quadrant = "";
+
+    // ===============================
+    // Quadrant Detection Logic
+    // ===============================
+    if (x < width / 2 && y < height / 2) {
+        quadrant = "Top Left";
+        document.body.style.background = "#1abc9c";
+    } 
+    else if (x >= width / 2 && y < height / 2) {
+        quadrant = "Top Right";
+        document.body.style.background = "#3498db";
+    } 
+    else if (x < width / 2 && y >= height / 2) {
+        quadrant = "Bottom Left";
+        document.body.style.background = "#9b59b6";
+    } 
+    else {
+        quadrant = "Bottom Right";
+        document.body.style.background = "#e74c3c";
+    }
+
+    // ===============================
+    // Update Info Display
+    // ===============================
+    info.innerHTML = `
+        X: ${x}px <br>
+        Y: ${y}px <br>
+        Current Quadrant: ${quadrant}
+    `;
+});
+
+</script>
+
+</body>
+</html>

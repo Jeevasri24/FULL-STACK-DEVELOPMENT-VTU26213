@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard & Mouse Events</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+#box {
+    width: 80px;
+    height: 80px;
+    background: gold;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#info {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="box"></div>
+<div id="info">Move using Arrow Keys / WASD | Click to change color | Drag to move</div>
+
+<script>
+// ===============================
+// ELEMENT REFERENCES
+// ===============================
+const box = document.getElementById("box");
+const info = document.getElementById("info");
+
+// ===============================
+// POSITION STATE
+// ===============================
+let x = 100;
+let y = 100;
+const speed = 15;
+let isDragging = false;
+
+// ===============================
+// KEYBOARD EVENTS
+// ===============================
+document.addEventListener("keydown", (event) => {
+
+    const maxWidth = window.innerWidth - box.offsetWidth;
+    const maxHeight = window.innerHeight - box.offsetHeight;
+
+    switch(event.key) {
+        case "ArrowUp":
+        case "w":
+            y = Math.max(0, y - speed);
+            break;
+
+        case "ArrowDown":
+        case "s":
+            y = Math.min(maxHeight, y + speed);
+            break;
+
+        case "ArrowLeft":
+        case "a":
+            x = Math.max(0, x - speed);
+            break;
+
+        case "ArrowRight":
+        case "d":
+            x = Math.min(maxWidth, x + speed);
+            break;
+    }
+
+    updatePosition();
+});
+
+// ===============================
+// MOUSE CLICK EVENT (Change Color)
+// ===============================
+box.addEventListener("click", () => {
+    box.style.background = 
+        `hsl(${Math.random() * 360}, 70%, 50%)`;
+});
+
+// ===============================
+// MOUSE DRAG EVENTS
+// ===============================
+box.addEventListener("mousedown", () => {
+    isDragging = true;
+});
+
+document.addEventListener("mouseup", () => {
+    isDragging = false;
+});
+
+document.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+        x = event.clientX - box.offsetWidth / 2;
+        y = event.clientY - box.offsetHeight / 2;
+        updatePosition();
+    }
+
+    // Display Mouse Coordinates
+    info.textContent = 
+        `Mouse: (${event.clientX}, ${event.clientY}) | Move with Arrow Keys/WASD | Click to change color | Drag to move`;
+});
+
+// ===============================
+// UPDATE POSITION FUNCTION
+// ===============================
+function updatePosition() {
+    box.style.left = x + "px";
+    box.style.top = y + "px";
+}
+</script>
+
+</body>
+</html>

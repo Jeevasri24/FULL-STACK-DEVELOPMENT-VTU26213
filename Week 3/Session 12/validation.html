@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tantraz Registration</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1f4037, #99f2c8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #1f4037;
+    outline: none;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1f4037;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #14532d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Tantraz Event Registration</h2>
+
+    <form>
+
+        <!-- Full Name (Required) -->
+        <div class="form-group">
+            <label for="fullname">Full Name *</label>
+            <input type="text"
+                   id="fullname"
+                   name="fullname"
+                   placeholder="Enter your full name"
+                   required>
+        </div>
+
+        <!-- Email (Required + Auto Validation) -->
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   placeholder="example@gmail.com"
+                   required>
+        </div>
+
+        <!-- Participation Category (Required) -->
+        <div class="form-group">
+            <label for="category">Participation Category *</label>
+            <select id="category"
+                    name="category"
+                    required>
+                <option value="">-- Select Category --</option>
+                <option value="individual">Individual</option>
+                <option value="team">Team</option>
+                <option value="audience">Audience</option>
+            </select>
+        </div>
+
+        <!-- T-Shirt Size -->
+        <div class="form-group">
+            <label>T-Shirt Size</label>
+            <div class="radio-group">
+                <label><input type="radio" name="size" value="S"> S</label>
+                <label><input type="radio" name="size" value="M"> M</label>
+                <label><input type="radio" name="size" value="L"> L</label>
+                <label><input type="radio" name="size" value="XL"> XL</label>
+            </div>
+        </div>
+
+        <!-- Technical Interests -->
+        <div class="form-group">
+            <label>Technical Interests</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="interests" value="AI"> AI</label>
+                <label><input type="checkbox" name="interests" value="Web Dev"> Web Development</label>
+                <label><input type="checkbox" name="interests" value="Cloud"> Cloud Computing</label>
+            </div>
+        </div>
+
+        <!-- Biography (Max 200 Characters) -->
+        <div class="form-group">
+            <label for="bio">Expectations / Suggestions</label>
+            <textarea id="bio"
+                      name="bio"
+                      maxlength="200"
+                      placeholder="Write your expectations (maximum 200 characters)...">
+            </textarea>
+        </div>
+
+        <button type="submit">Register Now</button>
+
+    </form>
+</div>
+
+</body>
+</html>

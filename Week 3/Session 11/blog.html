@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>College Management – Fees Portal</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #fff0f5 0%, #fde2e8 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff7fa;
+    width: 1000px;
+    border-radius: 16px;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(90deg, #f7b2c4, #f3a6b8);
+    color: #5a2a3c;
+    padding: 25px;
+    text-align: center;
+}
+
+main {
+    padding: 30px;
+}
+
+.section-title {
+    margin-bottom: 18px;
+    color: #c24d74;
+    font-size: 20px;
+    border-left: 5px solid #f3a6b8;
+    padding-left: 10px;
+}
+
+.blog-post {
+    background: #fdebf0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.blog-post h3 {
+    margin-top: 0;
+    color: #5a2a3c;
+}
+
+.blog-post video,
+.blog-post audio {
+    width: 100%;
+    margin-top: 15px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus, select:focus {
+    border-color: #f3a6b8;
+    outline: none;
+    box-shadow: 0 0 6px rgba(243,166,184,0.6);
+}
+
+.full-width {
+    grid-column: span 3;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.pay-btn {
+    background: linear-gradient(90deg, #f3a6b8, #f7b2c4);
+    color: #5a2a3c;
+}
+
+.reset-btn {
+    background: #e0e0e0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+}
+
+table th {
+    background: #f3a6b8;
+    color: #5a2a3c;
+}
+
+table tr:nth-child(even) {
+    background: #fdebf0;
+}
+
+.selected {
+    background: #f7b2c4 !important;
+    font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+    background: #f1f1f1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>College Management System</h1>
+    <p>Online Fees Portal</p>
+</header>
+
+<main>
+
+<!-- BLOG PLATFORM SECTION -->
+<section>
+    <h2 class="section-title">College Blog & Media Center</h2>
+
+    <article class="blog-post">
+        <h3>Annual Cultural Fest Highlights</h3>
+        <p>
+            Our annual cultural fest was a grand success with various performances,
+            competitions, and guest appearances. Watch the highlights below.
+        </p>
+
+        <video controls>
+            <source src="fest-highlights.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </article>
+
+    <article class="blog-post">
+        <h3>Principal’s Podcast – Vision 2026</h3>
+        <p>
+            Listen to our Principal sharing insights about the college’s
+            future plans and academic excellence initiatives.
+        </p>
+
+        <audio controls>
+            <source src="principal-podcast.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </article>
+</section>
+
+<!-- Existing Fee Payment Section -->
+<section>
+    <h2 class="section-title">Student Fee Payment</h2>
+
+    <form id="feeForm">
+        <div>
+            <label>Student ID</label>
+            <input type="text" id="studentId" required>
+        </div>
+
+        <div>
+            <label>Student Name</label>
+            <input type="text" id="studentName" required>
+        </div>
+
+        <div>
+            <label>Department</label>
+            <select id="department">
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>Mechanical</option>
+                <option>Civil</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Year</label>
+            <select id="year">
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Fee Type</label>
+            <select id="feeType">
+                <option>Tuition Fee</option>
+                <option>Hostel Fee</option>
+                <option>Exam Fee</option>
+                <option>Library Fee</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Amount</label>
+            <input type="number" id="amount" required>
+        </div>
+
+        <div class="full-width buttons">
+            <button type="submit" class="pay-btn">Pay Fees</button>
+            <button type="reset" class="reset-btn">Reset</button>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2 class="section-title">Fee Payment Records</h2>
+
+    <table id="paymentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Fee Type</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+</main>
+
+<footer>
+© 2026 College Management System
+</footer>
+
+</div>
+
+<script>
+let selectedRow = null;
+
+document.getElementById("feeForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const id = studentId.value;
+    const name = studentName.value;
+    const dept = department.value;
+    const fee = feeType.value;
+    const amt = amount.value;
+
+    const table = document.getElementById("paymentTable").getElementsByTagName("tbody")[0];
+
+    const row = table.insertRow();
+    row.innerHTML = `
+        <td>${id}</td>
+        <td>${name}</td>
+        <td>${dept}</td>
+        <td>${fee}</td>
+        <td>₹${amt}</td>
+        <td>Paid</td>
+    `;
+});
+</script>
+
+</body>
+</html>
